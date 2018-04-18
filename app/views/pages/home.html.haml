@@ -1,0 +1,64 @@
+.p-5
+  .row
+    .col-lg-12.px-3
+      %h1 Regression
+      %h5.subtitle Aproximate the UPDRS score for Parkinson's disease
+      = select_tag :method, options_for_select([["Smallest squares", "1"], ["Gradient descent", "2"], ["Genetic algorithm", "3"]]), class: "form-control mt-4"
+      .btn.btn-dark.float-right.mt-4.ml-1#test Test Accuracy
+      .btn.btn-dark.float-right.mt-4.ml-3#learn Start Training
+      
+      %ul.nav.nav-tabs.d-none.pt-4{:role => "tablist"}
+        %li.nav-item
+          %a#1.nav-link{"data-toggle" => "tab", :href => "#smsq", :role => "tab"} Smallest squares
+        %li.nav-item
+          %a#2.nav-link.active{"data-toggle" => "tab", :href => "#grds", :role => "tab"} Gradient descent
+        %li.nav-item
+          %a#3.nav-link{"data-toggle" => "tab", :href => "#galg", :role => "tab"} Genetic algorithm
+      / Tab panes
+      .tab-content
+        #smsq.tab-pane{:role => "tabpanel"}
+          
+        #grds.tab-pane.active{:role => "tabpanel"}
+        #galg.tab-pane{:role => "tabpanel"}
+          .input-group.py-4
+            .input-group-prepend
+              .input-group-text Generations
+            = number_field_tag :generations, value = 20, min: 2, max: 100, class: "form-control"
+            .input-group-prepend
+              .input-group-text Population Size
+            = number_field_tag :population_size, value = 10, min: 2, max: 100, class: "form-control"
+            .input-group-prepend
+              .input-group-text Momentum Factor
+            = number_field_tag :momentum_factor, value = 2, min: 0, max: 6, class: "form-control"
+            .input-group-prepend
+              .input-group-text Cognitive Factor
+            = number_field_tag :cognitive_factor, value = 2.6, min: 0, max: 4, class: "form-control"
+            .input-group-prepend
+              .input-group-text Social Factor
+            = number_field_tag :social_factor, value = 1.2, min: 0, max: 4, class: "form-control"
+
+      -#
+        .input-group.py-4
+          .input-group-prepend
+            .input-group-text Generations
+          = number_field_tag :generations, value = 20, min: 2, max: 100, class: "form-control"
+          .input-group-prepend
+            .input-group-text Population Size
+          = number_field_tag :population_size, value = 10, min: 2, max: 100, class: "form-control"
+          .input-group-prepend
+            .input-group-text Momentum Factor
+          = number_field_tag :momentum_factor, value = 2, min: 0, max: 6, class: "form-control"
+          .input-group-prepend
+            .input-group-text Cognitive Factor
+          = number_field_tag :cognitive_factor, value = 2.6, min: 0, max: 4, class: "form-control"
+          .input-group-prepend
+            .input-group-text Social Factor
+          = number_field_tag :social_factor, value = 1.2, min: 0, max: 4, class: "form-control"
+        .btn-group
+          .btn.btn-dark#start Smallest squares
+          .btn.btn-dark#start Gradient descent
+          .btn.btn-dark#start Genetic algorithm
+      %h6.mt-5.pt-5
+        Accuracy:
+        %span#accuracy unknown
+      %canvas#minimum-chart{ width: 1272, height: 240 } 
