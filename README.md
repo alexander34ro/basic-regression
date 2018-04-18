@@ -6,9 +6,9 @@ It is a Rails 5.1.5 app with Ruby 2.4.2
 
 Get the source:
 
-    $ git clone https://github.com/alexander34ro/pso.git
+    $ git clone https://github.com/alexander34ro/basic-regression.git
 
-    $ cd pso
+    $ cd regression
 
 Then install the bundler gem:
 
